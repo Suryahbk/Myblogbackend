@@ -29,7 +29,7 @@ router.post("/login" , async (req,res)=>{
       
        const validated = await bcrypt.compare(req.body.password,user.password) // validating the password through compare method between the saved password and user entered password.
        if(!validated){
-        return res.status(400).json("password wrong") // if now validated return 400 error.
+        return res.status(400).json("password wrong") // if not validated return 400 error.
     }
      const {password,...others} = user._doc;
     res.status(200).json(others);
